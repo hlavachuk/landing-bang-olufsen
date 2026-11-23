@@ -1,22 +1,28 @@
 mixin picture(name, alt, className, sizes = '100vw', eager = false)
   - const formats = ['avif', 'webp', 'jpeg'];
   - const fileFormat = (format) => (format === 'jpeg' ? 'jpg' : format);
+  - const imageWidth = (frame) => (['hero', 'banner'].includes(name) ? frame : name.startsWith('product') ? (frame === 320 ? 280 : frame === 744 ? 600 : 324) : frame === 320 ? 130 : frame === 744 ? 288 : 498);
+  - const imageSizes = ['hero', 'banner'].includes(name) ? '100vw' : name.startsWith('product') ? '(min-width: 1260px) 324px, (min-width: 744px) calc(100vw - 144px), calc(100vw - 40px)' : '(min-width: 1260px) 498px, (min-width: 744px) calc((100vw - 168px) / 2), calc((100vw - 60px) / 2)';
   picture(class=className + '-picture')
     each frame in [320, 744]
       each format in formats
         source(
           media=frame === 320 ? '(max-width: 743px)' : '(max-width: 1259px)',
           type='image/' + format,
-          srcset=[1, 2].map((scale) => `/images/${name}-${frame}-${scale}x.${fileFormat(format)} ${scale}x`).join(', ')
+          srcset=[1, 2].map((scale) => `/images/${name}-${frame}-${scale}x.${fileFormat(format)} ${imageWidth(frame) * scale}w`).join(', '),
+          sizes=imageSizes
         )
     each format in ['avif', 'webp']
       source(
         type='image/' + format,
-        srcset=[1, 2].map((scale) => `/images/${name}-1260-${scale}x.${format} ${scale}x`).join(', ')
+        srcset=[1, 2].map((scale) => `/images/${name}-1260-${scale}x.${format} ${imageWidth(1260) * scale}w`).join(', '),
+        sizes=imageSizes
       )
     img(
       class=className,
       src=`/images/${name}-1260-2x.jpg`,
+      srcset=[1, 2].map((scale) => `/images/${name}-1260-${scale}x.jpg ${imageWidth(1260) * scale}w`).join(', '),
+      sizes=imageSizes,
       alt=alt,
       width=name === 'hero' ? 2520 : name === 'banner' ? 2520 : name.startsWith('product') ? 648 : 996,
       height=name === 'hero' ? 1440 : name === 'banner' ? 920 : 648,
