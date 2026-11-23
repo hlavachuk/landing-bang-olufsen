@@ -1,0 +1,53 @@
+@use '../abstracts/mixins' as *;
+
+.hero {
+  position: relative;
+  height: 568px;
+  overflow: hidden;
+
+  @include mq(tablet) {
+    height: 994px;
+  }
+
+  @include mq(desktop) {
+    height: 720px;
+  }
+}
+
+.hero__picture {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__content {
+  position: absolute;
+  bottom: 40px;
+  inset-inline: 0;
+
+  @include mq(tablet) {
+    bottom: 64px;
+  }
+}
+
+.hero__title {
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-paper);
+
+  @include mq(tablet) {
+    font-size: 48px;
+  }
+
+  @include mq(desktop) {
+    font-size: 56px;
+  }
+}

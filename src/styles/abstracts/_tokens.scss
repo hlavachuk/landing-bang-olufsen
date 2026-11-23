@@ -1,0 +1,21 @@
+$breakpoints: (
+  tablet: 744px,
+  desktop: 1260px,
+);
+$colors: (
+  ink: #1b2129,
+  paper: #fff,
+  accent: #f98921,
+  hover: #1b2129,
+  pressed: #010810,
+  field: #f9f9f9,
+  menu: #f9f9f9,
+  timeless: #fcfaef,
+  muted: #9393a3,
+);
+$gutter: 24px;
+$gutter-mobile: 20px;
+$content-max: 1020px;
+$radius: 8px;
+$section-space-mobile: 96px;
+$section-space: 120px;

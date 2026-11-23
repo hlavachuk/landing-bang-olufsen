@@ -1,0 +1,117 @@
+extends ../layouts/main.pug
+include ../mixins/picture.pug
+include ../mixins/header.pug
+block data
+  include ../data/catalog.pug
+block content
+  #home.hero
+    .hero__picture
+      +picture(
+        'hero',
+        'Bang & Olufsen speaker in a living room',
+        'hero__image',
+        '100vw',
+        true,
+      )
+    +header
+    .hero__content.l-container
+      h1.hero__title Your senses.
+        br
+        | Set free.
+  #menu.menu(tabindex='-1')
+    nav.nav(aria-label='Main navigation')
+      +header(true)
+      .l-container
+        ul.nav__links
+          each item in navigation
+            li
+              a.nav__link(href='#' + item.href)= item.label
+        a.nav__phone(href='tel:+12345555555') +1 234 5555-55-55
+        a.nav__order(href='tel:+12345555555') Call to order
+  main#main.l-page__main
+    section#recommended.recommended.l-page__recommended.l-container(
+      aria-labelledby='recommended-title'
+    )
+      h2#recommended-title.section-title Recommended
+      .recommended__list.l-grid
+        each product in products
+          article.product-card.recommended__item
+            +picture(product.image, product.name, 'product-card__image')
+            h3.product-card__title= product.name
+            p.product-card__text= product.description
+            p.product-card__price= product.price
+    section#categories.categories.l-page__section.l-container(
+      aria-labelledby='categories-title'
+    )
+      h2#categories-title.section-title Sound. Vision.
+        br
+        | It’s your pick.
+      .categories__list
+        each category in categories
+          article.category
+            .l-grid
+              each image in category.images
+                .category__picture
+                  +picture(
+                    image,
+                    category.name + ' — Bang & Olufsen design',
+                    'category__image',
+                  )
+            h3.category__title= category.name
+      .l-grid
+        a.button.categories__button(
+          href='https://www.bang-olufsen.com/en/int',
+          target='_blank',
+          rel='noopener noreferrer'
+        ) View all
+    section#about.timeless.l-page__section(aria-labelledby='timeless-title')
+      .timeless__picture
+        +picture(
+          'banner',
+          'Bang & Olufsen turntable with a sculptural speaker',
+          'timeless__image',
+        )
+      .timeless__body
+        .timeless__inner.l-container.l-grid
+          h2#timeless-title.section-title.timeless__title Timeless, for 50 years and counting
+          p.timeless__text Bang & Olufsen is expanding its Recreated Classics Program with the launch of Beosystems – a limited edition music system that transcends time by bridging the gap between one of our iconic designs from 1972 and today’s cutting-edge digital technology.
+    section#contacts.contacts.l-page__section.l-container(
+      aria-labelledby='contacts-title'
+    )
+      h2#contacts-title.section-title Contact us
+      .contacts__content.l-grid
+        form.contact-form.contacts__form(action='#contacts', method='get')
+          each field in contactFields
+            .field
+              label.is-visually-hidden(for='contact-' + field.name)= field.label
+              input.field__input(
+                id='contact-' + field.name,
+                type=field.type,
+                name=field.name,
+                placeholder=field.label,
+                autocomplete=field.name,
+                required
+              )
+          .field
+            label.is-visually-hidden(for='contact-message') Message
+            textarea#contact-message.field__input.field__input--message(
+              name='message',
+              placeholder='Message',
+              required
+            )
+          button.button.contact-form__button(type='submit') Send
+        .contacts__details
+          .contacts__group
+            p.contacts__label Phone
+            a.contacts__value(href='tel:+12345555555') +1 234 5555-55-55
+          .contacts__group
+            p.contacts__label Email
+            a.contacts__value(href='mailto:hello@bang-olufsen.com') hello@bang&olufsen.com
+          .contacts__group
+            p.contacts__label Address
+            address.contacts__address.contacts__value 400 first ave.
+              br
+              | suite 700
+              br
+              | Minneapolis, MN 55401
+  footer.l-page__footer

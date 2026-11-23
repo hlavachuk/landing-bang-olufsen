@@ -1,0 +1,17 @@
+@use '../abstracts/tokens' as t;
+@use '../abstracts/mixins' as *;
+
+.l-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 t.$gutter-mobile;
+
+  @include mq(tablet) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: t.$gutter;
+  }
+
+  @include mq(desktop) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}

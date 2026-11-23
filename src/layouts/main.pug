@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(
+      name='description',
+      content='Discover Bang & Olufsen speakers, headphones and timeless audio design. Your senses. Set free.'
+    )
+    meta(name='theme-color', content='#fcfaef')
+    title Bang & Olufsen — Your senses. Set free.
+    link(rel='icon', href='/icons/logo.svg', type='image/svg+xml')
+    link(
+      rel='preload',
+      href='/fonts/manrope-latin.woff2',
+      as='font',
+      type='font/woff2',
+      crossorigin
+    )
+    link(rel='stylesheet', href='/src/styles/main.scss')
+  body.l-page
+    block data
+    a.skip-link(href='#main') Skip to main content
+    block content

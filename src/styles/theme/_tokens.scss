@@ -1,0 +1,7 @@
+@use '../abstracts/tokens' as t;
+
+:root {
+  @each $name, $value in t.$colors {
+    --color-#{$name}: #{$value};
+  }
+}

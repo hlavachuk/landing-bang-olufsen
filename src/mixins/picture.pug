@@ -1,0 +1,26 @@
+mixin picture(name, alt, className, sizes = '100vw', eager = false)
+  - const formats = ['avif', 'webp', 'jpeg'];
+  - const fileFormat = (format) => (format === 'jpeg' ? 'jpg' : format);
+  picture(class=className + '-picture')
+    each frame in [320, 744]
+      each format in formats
+        source(
+          media=frame === 320 ? '(max-width: 743px)' : '(max-width: 1259px)',
+          type='image/' + format,
+          srcset=[1, 2].map((scale) => `/images/${name}-${frame}-${scale}x.${fileFormat(format)} ${scale}x`).join(', ')
+        )
+    each format in ['avif', 'webp']
+      source(
+        type='image/' + format,
+        srcset=[1, 2].map((scale) => `/images/${name}-1260-${scale}x.${format} ${scale}x`).join(', ')
+      )
+    img(
+      class=className,
+      src=`/images/${name}-1260-2x.jpg`,
+      alt=alt,
+      width=name === 'hero' ? 2520 : name === 'banner' ? 2520 : name.startsWith('product') ? 648 : 996,
+      height=name === 'hero' ? 1440 : name === 'banner' ? 920 : 648,
+      loading=eager ? 'eager' : 'lazy',
+      fetchpriority=eager ? 'high' : 'auto',
+      decoding='async'
+    )

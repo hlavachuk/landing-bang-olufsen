@@ -1,0 +1,15 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+}
+
+.menu:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}

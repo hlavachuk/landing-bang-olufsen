@@ -1,0 +1,25 @@
+@use '../abstracts/mixins' as *;
+
+.categories__list {
+  margin-top: 48px;
+  display: grid;
+  gap: 40px;
+
+  @include mq(tablet) {
+    margin-top: 56px;
+    gap: 56px;
+  }
+}
+
+.categories__button {
+  grid-column: 1 / -1;
+  margin-top: 40px;
+
+  @include mq(tablet) {
+    margin-top: 56px;
+  }
+
+  @include mq(desktop) {
+    grid-column: span 4;
+  }
+}

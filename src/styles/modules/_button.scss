@@ -1,0 +1,25 @@
+@use '../abstracts/tokens' as t;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
+  border: 0;
+  border-radius: t.$radius;
+  background: var(--color-accent);
+  color: var(--color-paper);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--color-hover);
+}
+
+.button:active {
+  background: var(--color-pressed);
+}

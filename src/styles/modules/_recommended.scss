@@ -1,0 +1,19 @@
+@use '../abstracts/mixins' as *;
+
+.recommended__list {
+  margin-top: 48px;
+  row-gap: 40px;
+
+  @include mq(tablet) {
+    margin-top: 56px;
+    row-gap: 56px;
+  }
+}
+
+.recommended__item {
+  grid-column: 1 / -1;
+
+  @include mq(desktop) {
+    grid-column: span 4;
+  }
+}

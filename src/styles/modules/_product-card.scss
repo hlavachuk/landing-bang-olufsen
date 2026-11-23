@@ -1,0 +1,33 @@
+@use '../abstracts/mixins' as *;
+
+.product-card__image {
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.product-card__title {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.product-card__text {
+  letter-spacing: 0.15px;
+
+  @include mq(desktop) {
+    max-width: 280px;
+  }
+
+  margin-top: 8px;
+  line-height: 22px;
+}
+
+.product-card__price {
+  margin-top: 12px;
+  font-weight: 700;
+  line-height: 22px;
+}
