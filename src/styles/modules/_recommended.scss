@@ -17,3 +17,13 @@
     grid-column: span 4;
   }
 }
+
+.recommended__item:first-child .product-card__text {
+  @include mq(tablet) {
+    min-height: 66px;
+  }
+
+  @include mq(desktop) {
+    min-height: 0;
+  }
+}

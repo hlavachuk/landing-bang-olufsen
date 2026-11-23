@@ -18,9 +18,17 @@
 }
 
 .l-page__footer {
-  height: 96px;
+  height: 64px;
 
   @include mq(tablet) {
     height: 120px;
+  }
+}
+
+.l-page__contacts {
+  margin-top: 64px;
+
+  @include mq(tablet) {
+    margin-top: 120px;
   }
 }
